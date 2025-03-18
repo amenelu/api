@@ -1,8 +1,16 @@
 from flask import Flask
 from flask_restful import Api, Resource
 
-app=Flask(__name__)
-api=Api(app)
+app = Flask(__name__)
+api = Api(app)
 
-if__name__=="__main__": # type: ignore
-app.run(debug=True)
+
+class HelloWorld(Resource):
+    def get(self):
+        return {"data": "hello world"}
+
+
+api.add_resource(HelloWorld, "/helloworld")
+
+if __name__ == "__main__":
+    app.run(debug=True)
